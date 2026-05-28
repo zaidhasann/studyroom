@@ -1,0 +1,14 @@
+node_modules/
+.DS_Store
+.env
+.env.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
+.vscode/
+.idea/
+*.swp
+*.swo
+.vercel

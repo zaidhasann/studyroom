@@ -1,0 +1,226 @@
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0A0E17 0%, #1A1F2E 50%, #2A1F2E 100%);
+  color: #E5E7EB;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 20% 50%, rgba(193, 81, 78, 0.05) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 80%, rgba(193, 81, 78, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #1A1F2E 0%, #252B3A 100%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #C1514E, #8B3A3A);
+  border-radius: 10px;
+  border: 2px solid #1A1F2E;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #A84646, #6B2C2C);
+}
+
+/* Custom utility classes */
+.btn-primary {
+  @apply px-4 py-2 text-white rounded-lg transition-all font-semibold shadow-lg hover:shadow-glow relative overflow-hidden;
+  background: linear-gradient(to right, #A84646, #8B3A3A);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, #C1514E, #A84646);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  @apply px-4 py-2 rounded-lg transition-colors font-semibold border;
+  background-color: #252B3A;
+  color: #C1514E;
+  border-color: #333844;
+}
+
+.btn-secondary:hover {
+  background-color: #333844;
+  border-color: #A84646;
+  color: #E84C47;
+}
+
+.btn-danger {
+  @apply px-4 py-2 text-white rounded-lg transition-colors font-semibold shadow-lg;
+  background-color: #8B3A3A;
+}
+
+.btn-danger:hover {
+  background-color: #6B2C2C;
+}
+
+.card {
+  @apply rounded-2xl p-6 border transition-all shadow-card hover:shadow-premium backdrop-blur-sm relative;
+  background: linear-gradient(to bottom right, #1A1F2E, #252B3A, #1A1F2E);
+  border-color: #333844;
+}
+
+.card:hover {
+  border-color: rgba(193, 81, 78, 0.5);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(193, 81, 78, 0.3), transparent);
+  border-radius: 2px;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none transition-all;
+  background-color: rgba(37, 43, 58, 0.5);
+  border: 1px solid #333844;
+  backdrop-filter: blur(10px);
+}
+
+.input-field:focus {
+  border-color: #A84646;
+  box-shadow: 0 0 0 2px rgba(193, 81, 78, 0.2);
+}
+
+.section-title {
+  @apply text-4xl font-bold mb-8;
+  background: linear-gradient(to right, #C1514E, #8B3A3A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.btn-danger {
+  @apply px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium;
+}
+
+.card {
+  @apply bg-white border border-gray-200 rounded-lg shadow-sm p-4;
+}
+
+.input-field {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent;
+}
+
+.section-title {
+  @apply text-2xl font-bold text-gray-900 mb-4;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-in;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
