@@ -8,6 +8,10 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [loginTime, setLoginTime] = useState(() => {
+    const stored = localStorage.getItem('loginTime');
+    return stored ? parseInt(stored) : null;
+  });
 
   // Verify token on mount
   useEffect(() => {
@@ -16,6 +20,13 @@ export const AuthProvider = ({ children }) => {
         try {
           const response = await authAPI.getProfile();
           setUser(response.data.user);
+          
+          // Set loginTime if not already set (for existing sessions)
+          if (!loginTime) {
+            const now = Date.now();
+            localStorage.setItem('loginTime', now.toString());
+            setLoginTime(now);
+          }
         } catch (err) {
           localStorage.removeItem('token');
           setToken(null);
@@ -33,7 +44,10 @@ export const AuthProvider = ({ children }) => {
       setLoading(true);
       const response = await authAPI.register(name, email, password);
       localStorage.setItem('token', response.data.token);
+      const now = Date.now();
+      localStorage.setItem('loginTime', now);
       setToken(response.data.token);
+      setLoginTime(now);
       setUser(response.data.user);
       setError(null);
       return response.data;
@@ -51,7 +65,10 @@ export const AuthProvider = ({ children }) => {
       setLoading(true);
       const response = await authAPI.login(email, password);
       localStorage.setItem('token', response.data.token);
+      const now = Date.now();
+      localStorage.setItem('loginTime', now);
       setToken(response.data.token);
+      setLoginTime(now);
       setUser(response.data.user);
       setError(null);
       return response.data;
@@ -66,7 +83,9 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('loginTime');
     setToken(null);
+    setLoginTime(null);
     setUser(null);
     setError(null);
   };
@@ -87,6 +106,7 @@ export const AuthProvider = ({ children }) => {
     token,
     loading,
     error,
+    loginTime,
     isAuthenticated: !!token,
     register,
     login,

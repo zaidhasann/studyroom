@@ -5,6 +5,8 @@ const roomSchema = new mongoose.Schema(
     roomName: {
       type: String,
       required: true,
+      unique: true,
+      trim: true,
     },
     roomCode: {
       type: String,
@@ -31,6 +33,27 @@ const roomSchema = new mongoose.Schema(
       type: String,
       default: '',
     },
+    category: {
+      type: String,
+      enum: ['Math', 'Science', 'Literature', 'History', 'Languages', 'Programming', 'Arts', 'General'],
+      default: 'General',
+    },
+    maxMembers: {
+      type: Number,
+      default: 20,
+      min: 2,
+      max: 100,
+    },
+    password: {
+      type: String,
+      default: null, // null means no password
+    },
+    files: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'File',
+      },
+    ],
     isActive: {
       type: Boolean,
       default: true,

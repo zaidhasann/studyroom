@@ -156,6 +156,39 @@ export const setupSocket = (io) => {
       });
     });
 
+    // Whiteboard drawing events
+    socket.on('draw', (data) => {
+      const { roomId, x0, y0, x1, y1, color, size } = data;
+      socket.to(roomId).emit('draw', {
+        userId: socket.userId,
+        userName: socket.userName,
+        x0,
+        y0,
+        x1,
+        y1,
+        color,
+        size,
+      });
+    });
+
+    socket.on('clear-canvas', (data) => {
+      const { roomId } = data;
+      io.to(roomId).emit('clear-canvas', {
+        userId: socket.userId,
+        userName: socket.userName,
+      });
+    });
+
+    socket.on('cursor-position', (data) => {
+      const { roomId, x, y } = data;
+      socket.to(roomId).emit('cursor-position', {
+        userId: socket.userId,
+        userName: socket.userName,
+        x,
+        y,
+      });
+    });
+
     // Disconnect
     socket.on('disconnect', () => {
       console.log(`User disconnected: ${socket.userId}`);

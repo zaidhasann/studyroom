@@ -9,6 +9,7 @@ import { useToast } from './hooks/useToast';
 import Navbar from './components/Navbar';
 import Toast from './components/Toast';
 import ProtectedRoute from './components/ProtectedRoute';
+import FloatingWatch from './components/FloatingWatch';
 
 // Pages
 import LandingPage from './pages/LandingPage';
@@ -17,6 +18,7 @@ import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import RoomPage from './pages/RoomPage';
 import ProfilePage from './pages/ProfilePage';
+import ActivityPage from './pages/ActivityPage';
 
 import './styles/globals.css';
 
@@ -28,6 +30,7 @@ function AppContent() {
     <div>
       <Navbar />
       <Toast toasts={toasts} removeToast={removeToast} />
+      <FloatingWatch />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -56,6 +59,15 @@ function AppContent() {
           element={
             <ProtectedRoute isAuthenticated={isAuthenticated} isLoading={loading}>
               <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/activity"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated} isLoading={loading}>
+              <ActivityPage />
             </ProtectedRoute>
           }
         />

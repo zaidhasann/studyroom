@@ -30,16 +30,28 @@ export const authAPI = {
 
 // Room API calls
 export const roomAPI = {
-  createRoom: (roomName, description) =>
-    apiClient.post('/rooms', { roomName, description }),
+  createRoom: (roomName, description, category, maxMembers, password) =>
+    apiClient.post('/rooms', { roomName, description, category, maxMembers, password }),
   getRooms: () => apiClient.get('/rooms'),
   getRoomById: (id) => apiClient.get(`/rooms/${id}`),
-  updateRoom: (id, roomName, description) =>
-    apiClient.put(`/rooms/${id}`, { roomName, description }),
+  updateRoom: (id, roomName, description, category, maxMembers, password) =>
+    apiClient.put(`/rooms/${id}`, { roomName, description, category, maxMembers, password }),
   deleteRoom: (id) => apiClient.delete(`/rooms/${id}`),
-  joinRoom: (roomCode) => apiClient.post('/rooms/join-room', { roomCode }),
+  joinRoom: (roomCode, password) => apiClient.post('/rooms/join-room', { roomCode, password }),
   leaveRoom: (id) => apiClient.post(`/rooms/${id}/leave`),
   getUserRooms: () => apiClient.get('/rooms/user/my-rooms'),
+  removeMember: (roomId, memberId) => apiClient.post('/rooms/remove-member', { roomId, memberId }),
+  uploadFile: (roomId, file, fileType, description) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('fileType', fileType);
+    formData.append('description', description);
+    return apiClient.post(`/rooms/${roomId}/files/upload`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  },
+  getFiles: (roomId) => apiClient.get(`/rooms/${roomId}/files`),
+  deleteFile: (fileId) => apiClient.delete(`/rooms/files/${fileId}`),
 };
 
 // Session API calls

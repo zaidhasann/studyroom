@@ -50,7 +50,7 @@ const ProfilePage = () => {
                   className="input-field"
                 />
               ) : (
-                <p className="text-maroon-400">{user?.name}</p>
+                <p className="text-indigo-400">{user?.name}</p>
               )}
             </div>
 

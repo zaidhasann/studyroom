@@ -12,13 +12,17 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-dark-800/50 backdrop-blur-md border-b border-dark-600 sticky top-0 z-50">
+    <nav className="bg-dark-900/80 backdrop-blur-xl border-b border-indigo-500/10 sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold bg-gradient-accent bg-clip-text text-transparent">
-              📚 StudyRoom
+          <div className="flex items-center gap-2">
+            <div className="text-2xl">📚</div>
+            <Link 
+              to="/" 
+              className="text-xl font-bold text-rose-500 bg-gradient-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+            >
+              StudyRoom
             </Link>
           </div>
 
@@ -26,35 +30,44 @@ const Navbar = () => {
           <div className="flex items-center gap-4">
             {isAuthenticated ? (
               <>
-                <span className="text-maroon-400 font-semibold">{user?.name}</span>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600/20 to-purple-600/20 border border-indigo-500/40 hover:border-indigo-400/80 transition-all shadow-md">
+                  <span className="text-indigo-400 font-bold text-base">👤</span>
+                  <span className="text-indigo-300 font-bold text-sm">{user?.name}</span>
+                </div>
                 <Link
                   to="/dashboard"
-                  className="text-gray-300 hover:text-maroon-400 transition-colors font-medium"
+                  className="text-gray-400 hover:text-cyan-400 transition-colors font-medium text-sm"
                 >
                   Dashboard
                 </Link>
                 <Link
+                  to="/activity"
+                  className="text-gray-400 hover:text-cyan-400 transition-colors font-medium text-sm"
+                >
+                  Activity
+                </Link>
+                <Link
                   to="/profile"
-                  className="text-gray-300 hover:text-maroon-400 transition-colors font-medium"
+                  className="text-gray-400 hover:text-cyan-400 transition-colors font-medium text-sm"
                 >
                   Profile
                 </Link>
                 <button
-                  onClick={handleLogout}
-                  className="btn-primary"
-                >
-                  Logout
-                </button>
+  onClick={handleLogout}
+  className="bg-rose-500 hover:bg-rose-600 text-white px-4 py-2 rounded-lg text-sm transition-colors"
+>
+  Logout
+</button>
               </>
             ) : (
               <>
                 <Link
                   to="/login"
-                  className="text-gray-700 hover:text-blue-600 transition"
+                  className="text-gray-400 hover:text-cyan-400 transition-colors font-medium text-sm"
                 >
                   Login
                 </Link>
-                <Link to="/register" className="btn-primary">
+                <Link to="/register" className="bg-rose-500 hover:bg-rose-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
                   Sign Up
                 </Link>
               </>

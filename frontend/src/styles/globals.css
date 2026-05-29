@@ -1,3 +1,7 @@
+/* Import premium fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
+
 /* Tailwind CSS directives */
 @tailwind base;
 @tailwind components;
@@ -15,12 +19,14 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #0A0E17 0%, #1A1F2E 50%, #2A1F2E 100%);
+  font-family: 'Inter', 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0F172A 0%, #1A1F3A 50%, #1F1F4A 100%);
   color: #E5E7EB;
   line-height: 1.6;
   min-height: 100vh;
   position: relative;
+  font-weight: 400;
+  letter-spacing: 0.3px;
 }
 
 body::before {
@@ -30,8 +36,8 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(ellipse at 20% 50%, rgba(193, 81, 78, 0.05) 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 80%, rgba(193, 81, 78, 0.03) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
 }
@@ -42,28 +48,30 @@ body::before {
 }
 
 ::-webkit-scrollbar-track {
-  background: linear-gradient(180deg, #1A1F2E 0%, #252B3A 100%);
+  background: linear-gradient(180deg, #1A1F3A 0%, #252B4A 100%);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #C1514E, #8B3A3A);
+  background: linear-gradient(180deg, #0891B2, #06B6D4);
   border-radius: 10px;
-  border: 2px solid #1A1F2E;
+  border: 2px solid #0F172A;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #A84646, #6B2C2C);
+  background: linear-gradient(180deg, #22D3EE, #5EEAD4);
 }
 
 /* Custom utility classes */
 .btn-primary {
   @apply px-4 py-2 text-white rounded-lg transition-all font-semibold shadow-lg hover:shadow-glow relative overflow-hidden;
-  background: linear-gradient(to right, #A84646, #8B3A3A);
+  background: linear-gradient(135deg, #6366F1, #8B5CF6);
+  letter-spacing: 0.5px;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(to right, #C1514E, #A84646);
+  background: linear-gradient(135deg, #818CF8, #A78BFA);
+  transform: translateY(-2px);
 }
 
 .btn-primary::before {
@@ -83,34 +91,41 @@ body::before {
 
 .btn-secondary {
   @apply px-4 py-2 rounded-lg transition-colors font-semibold border;
-  background-color: #252B3A;
-  color: #C1514E;
-  border-color: #333844;
+  background: linear-gradient(135deg, #0F766E, #0D9488);
+  color: #5EEAD4;
+  border-color: #14B8A6;
+  letter-spacing: 0.5px;
 }
 
 .btn-secondary:hover {
-  background-color: #333844;
-  border-color: #A84646;
-  color: #E84C47;
+  background: linear-gradient(135deg, #0D9488, #14B8A6);
+  border-color: #2DD4BF;
+  color: #FFFFFF;
+  transform: translateY(-2px);
 }
 
 .btn-danger {
   @apply px-4 py-2 text-white rounded-lg transition-colors font-semibold shadow-lg;
-  background-color: #8B3A3A;
+  background-color: #DC2626;
+  letter-spacing: 0.5px;
 }
 
 .btn-danger:hover {
-  background-color: #6B2C2C;
+  background-color: #DC2626;
+  transform: translateY(-2px);
 }
 
 .card {
   @apply rounded-2xl p-6 border transition-all shadow-card hover:shadow-premium backdrop-blur-sm relative;
-  background: linear-gradient(to bottom right, #1A1F2E, #252B3A, #1A1F2E);
-  border-color: #333844;
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.4) 0%, rgba(15, 118, 110, 0.2) 100%);
+  border-color: #0891B2;
+  border-opacity: 0.3;
 }
 
 .card:hover {
-  border-color: rgba(193, 81, 78, 0.5);
+  border-color: #22D3EE;
+  background: linear-gradient(135deg, rgba(40, 35, 95, 0.5) 0%, rgba(15, 130, 120, 0.3) 100%);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.2);
 }
 
 .card::before {
@@ -120,28 +135,30 @@ body::before {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(193, 81, 78, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
   border-radius: 2px;
 }
 
 .input-field {
   @apply w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none transition-all;
-  background-color: rgba(37, 43, 58, 0.5);
-  border: 1px solid #333844;
+  background-color: rgba(30, 35, 60, 0.6);
+  border: 1px solid #0891B2;
+  border-opacity: 0.3;
   backdrop-filter: blur(10px);
 }
 
 .input-field:focus {
-  border-color: #A84646;
-  box-shadow: 0 0 0 2px rgba(193, 81, 78, 0.2);
+  border-color: #22D3EE;
+  box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2);
 }
 
 .section-title {
-  @apply text-4xl font-bold mb-8;
-  background: linear-gradient(to right, #C1514E, #8B3A3A);
+  @apply text-4xl md:text-5xl font-bold mb-8 font-display;
+  background: linear-gradient(to right, #6366F1, #22D3EE);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  letter-spacing: -0.5px;
 }
 
 .fade-in {
@@ -179,14 +196,6 @@ body::before {
   100% {
     background-position: 1000px 0;
   }
-}
-
-.btn-danger {
-  @apply px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium;
-}
-
-.card {
-  @apply bg-white border border-gray-200 rounded-lg shadow-sm p-4;
 }
 
 .input-field {
