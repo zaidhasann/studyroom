@@ -75,7 +75,7 @@ const RegisterPage = () => {
               onChange={handleChange}
               required
               className="input-field"
-              placeholder="John Doe"
+              placeholder="xyz"
             />
           </div>
 
@@ -90,7 +90,7 @@ const RegisterPage = () => {
               onChange={handleChange}
               required
               className="input-field"
-              placeholder="you@example.com"
+              placeholder="your@example.com"
             />
           </div>
 
