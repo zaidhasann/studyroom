@@ -1,10 +1,15 @@
+IMPORTANT NOTE - the password should have the first letter capital and one special character and one digit atleast (for example - Jaypee@12)
+
+
 # 📚 Collaborative Study Room Platform
 
 A production-ready full-stack web application that enables students to create focused virtual study rooms, collaborate in real-time, track sessions, and communicate seamlessly.
 
-**Live Demo:** [Coming Soon]  
-**Frontend:** [Deploy on Vercel]  
-**Backend:** [Deploy on Render]  
+**Live Demo:** [https://studyroomm.onrender.com/]  
+**Frontend:** [Deploy on render]  
+**Backend:** [Deploy on render]  
+
+
 
 ---
 
